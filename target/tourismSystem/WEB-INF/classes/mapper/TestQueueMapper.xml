@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.TestQueueDao">
+
+    <insert id="addQueue">
+        insert into queue(wxid)values(#{param1})
+    </insert>
+
+    <select id="showHeadOfQueue" resultType="java.lang.Integer">
+        select wxid from queue order by number asc limit 1
+    </select>
+
+    <delete id="removeHeadOfQueue">
+        delete from queue order by number asc limit 1
+    </delete>
+
+    <select id="showQueue" resultType="java.util.HashMap">
+        select number as "序号",wxid as "微信ID" from queue order by number asc
+    </select>
+
+</mapper>
